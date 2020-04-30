@@ -33,7 +33,7 @@ pipeline {
       }
     }
 
-    stage('Run docker ') {
+    stage('Run docker') {
       steps {
        sh 'sudo docker pull 192.168.1.30:8123/dz11:1'
 	        }
