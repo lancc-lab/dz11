@@ -2,7 +2,6 @@ FROM tomcat
 RUN apt-get -y update
 RUN apt-get -y install maven
 RUN apt-get -y install git
-RUN apt-get -y install docker.io
 
 # Install docker 18.03
 RUN apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
