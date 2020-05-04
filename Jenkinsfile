@@ -23,12 +23,12 @@ pipeline {
       }
     }
 
-    stage('Make docker image') {
+    stage('Make docker image and push') {
       steps {
-        sh 'cp /var/lib/jenkins/workspace/d.z_pipeline/target/hello-1.0.war /usr/local/tomcat/webapps/hello-1.0.war && cp /var/lib/jenkins/workspace/d.z_pipeline/my_password.txt /root/my_password.txt '
-        sh 'docker build -t dz11:5 .'
+        sh 'cp /var/lib/jenkins/workspace/d.z_pipeline/my_password.txt /root/my_password.txt '
+        sh 'docker build -t boxfuse_build .'
         sh 'cat ~/my_password.txt | docker login 192.168.1.30:8123 --username admin --password-stdin'
-        sh '''docker tag dz11:5 192.168.1.30:8123/dz11:5 && docker push 192.168.1.30:8123/dz11:5'''
+        sh '''docker tag boxfuse_build 192.168.1.30:8123/boxfuse_build && docker push 192.168.1.30:8123/boxfuse_build'''
 
       }
   
